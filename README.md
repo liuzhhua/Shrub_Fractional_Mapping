@@ -1,6 +1,6 @@
 ---
 
-Integrating Google Earth imagery, Sentinel-2 time-series data, and machine learning to map shrub fractional abundance across arid and semi-arid ecosystems in China
+Shrub Fractional Abundance Mapping in Arid and Semi-Arid Ecosystems
 ==================================================================
 
 Overview
