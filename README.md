@@ -1,13 +1,11 @@
-Sure! Here’s the **plain text (.txt)** version of the README I drafted for you — stripped of Markdown formatting but preserving clear structure so you can save it as `README.txt` in your GitHub repository.
-
 ---
 
-Shrub Fractional Abundance Mapping in Arid and Semi-Arid Ecosystems
+Integrating Google Earth imagery, Sentinel-2 time-series data, and machine learning to map shrub fractional abundance across arid and semi-arid ecosystems in China
 ==================================================================
 
 Overview
 --------
-Shrub fractional abundance (SFA) — the proportion of shrubs per unit area — is a key indicator for assessing environmental aridity and ecosystem health in drylands. Large-scale SFA mapping has been challenging because:
+Shrub fractional abundance (SFA), the proportion of shrubs per unit area, is a key indicator for assessing environmental aridity and ecosystem health in drylands. Large-scale SFA mapping has been challenging because:
 
 - Shrubs have small crown sizes and sparse distributions.
 - They show spectral similarity with grasses and herbs.
@@ -18,7 +16,7 @@ This project introduces a two-step deep learning and remote sensing framework th
 - High-resolution Google Earth imagery (0.5m)
 - Time-series Sentinel-2 observations (20m)
 - Hybrid deep learning models (DINOv2 + CNNs)
-- Machine learning regression (XGBoost) with phenological features
+- Machine learning regression (XGBoost) with Time-series Sentinel-2 data
 
 The approach was developed and validated in Inner Mongolia, China, and is adaptable to other arid and semi-arid ecosystems worldwide.
 
@@ -28,12 +26,12 @@ Key Contributions
    - Manual segmentation to create benchmark datasets.
    - Hybrid DINOv2 + CNN deep learning architecture.
 2. Scaling up using Sentinel-2 time-series data:
-   - Extracted phenological metrics.
+   - Generated Sentinel-2 time-series data.
    - Developed an XGBoost model to predict SFA.
 3. Model explainability:
-   - SHAP analysis identified key phenological periods (early May, mid July, late September).
+   - SHAP analysis identified key phenological periods.
 4. Regional-scale ecological insights:
-   - Found unimodal relationships between SFA and climate variables, peaking at ~0°C annual minimum temperature and ~200 mm precipitation.
+   - Found unimodal relationships between SFA and climate variables.
 
 Repository Structure
 --------------------
@@ -78,8 +76,8 @@ Results
 Getting Started
 ---------------
 1. Clone the repository  
-   git clone https://github.com/<YourUsername>/<RepoName>.git  
-   cd <RepoName>
+   git clone https://github.com/liuzhhua/Shrub_Fractional_Mapping.git  
+   cd <Shrub_Fractional_Mapping>
 
 2. Install dependencies  
    pip install -r requirements.txt
@@ -90,7 +88,7 @@ Getting Started
 
 4. Run the pipeline  
    python src/ge_processing/train_shrub_segmentation.py  
-   python src/sentinel_analysis/extract_phenology.py  
+   python src/sentinel_analysis/predict_shrub_segmentation.py  
    python src/modeling/train_xgboost.py  
    python src/modeling/predict_sfa.py  
 
@@ -99,10 +97,10 @@ Citation
 If you use this project, cite as:
 
 @article{YourCitation2024,  
-  title={Large-Scale Shrub Fractional Abundance Mapping via Multi-Source Remote Sensing and Machine Learning},  
-  author={Your Name and Coauthors},  
-  journal={Journal Name},  
-  year={2024}  
+  title={Integrating Google Earth imagery, Sentinel-2 time-series data, and machine learning to map shrub fractional abundance across arid and semi-arid ecosystems in China},  
+  author={Liu Zhonghua},  
+  journal={Remote Sensing of Environment},  
+  year={2025}  
 }
 
 License
