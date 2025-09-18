@@ -25,13 +25,6 @@ The segmentation process follows a clear, multi-stage pipeline:
 3.  **Model Training**: Train a CNN segmentation model (U-Net, DeepLab, etc.) using the extracted features.
 4.  **Prediction & Output**: Generate binary crown segmentation maps for input scenes.
 
-```mermaid
-graph TD
-    A[VHR Imagery & Annotations] --> B(Preprocessing);
-    B --> C(DINOv2 Feature Extraction);
-    C --> D(CNN Model Training);
-    D --> E(Predict Crown Masks);
-    E --> F[Binary Segmentation Map .tif];
 ⚡ Quick Start
 1. Install Dependencies
 Ensure you are in the crown_segmentation directory.
@@ -83,25 +76,13 @@ If you use this specific module in your work, please cite the main repository an
 
 
 @misc{shrub_sfa_mapping_2025,
-  author    = {Your Name and Co-authors},
-  title     = {AI-Driven Mapping of Shrub Fractional Abundance in Drylands},
+  author    = {Zhonghua Liu},
+  title     = {Integrating very high‑resolution imagery, Sentinel-2 time-series data, and machine learning to map shrub fractional abundance across arid and semi-arid ecosystems in China},
   year      = {2025},
+  journal   = {Remote Sensing of Environment},
   publisher = {GitHub},
-  url       = {https://github.com/yourusername/shrub-sfa-mapping}
+  url       = {https://github.com/liuzhhua/Shrub_Fractional_Mapping}
 }
 📄 License
 This module is licensed under the MIT License — see the main project LICENSE file for details.
 
-
-
-### Key Enhancements for this sub-module README:
-
-1.  **Consistent Branding**: Uses the same badge style and structure as the main README.
-2.  **Visual Workflow**: Introduces a Mermaid.js diagram to visually explain the data pipeline, making it much easier to understand at a glance.
-3.  **Structured Quick Start**: Clearly separates installation, training, and prediction into distinct code blocks.
-4.  **Detailed File Structure**: Provides a clear map of the subfolder's contents, which is incredibly helpful for new users navigating the code.
-5.  **Expanded Performance Table**: Adds common segmentation metrics (Precision, Recall) alongside R² for a more comprehensive view of model performance.
-6.  **Callout for Visualization**: Prompts you to add a visual example of the input vs. output, which is one of the most effective ways to showcase your tool's capability.
-7.  **Explicit Links**: Clearly links back to the main project for license and citation, maintaining a connected documentation ecosystem.
-
-This design makes the module appear more robust, well-documented, and user-friendly.
