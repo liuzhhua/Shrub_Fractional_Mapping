@@ -24,8 +24,9 @@ The segmentation process follows a clear, multi-stage pipeline:
 2.  **Feature Extraction**: Utilize a pre-trained DINOv2 model to generate rich, contextual image features.
 3.  **Model Training**: Train a CNN segmentation model (U-Net, DeepLab, etc.) using the extracted features.
 4.  **Prediction & Output**: Generate binary crown segmentation maps for input scenes.
+---
 
-⚡ Quick Start
+## ⚡ Quick Start
 1. Install Dependencies
 Ensure you are in the crown_segmentation directory.
 
@@ -55,9 +56,12 @@ Precision	0.89	Robust detection of small, sparse shrubs
 Recall	0.85	Effective across varying canopy densities
 Example output from a test site:
 (Consider adding a small screenshot here comparing imagery vs. prediction mask)
+---
 
-📁 File Structure
+## 📁 File Structure
 
+```
+.
 crown_segmentation/
 ├── data/                    # Example data and annotations
 │   ├── raw/                 # Raw input imagery
@@ -71,7 +75,10 @@ crown_segmentation/
 ├── outputs/                 # Training logs, model weights, visuals
 ├── config.yaml              # Configuration parameters (optional)
 └── README.md               # This file
-📜 Citation
+```
+---
+
+## 📜 Citation
 If you use this specific module in your work, please cite the main repository and any relevant publications:
 
 
