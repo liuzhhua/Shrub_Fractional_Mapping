@@ -19,7 +19,7 @@ Run them independently or as a complete pipeline!
 🗂 Repository Structure
 
 .
-├── crown_segmentation/    # Step 1 — Detect shrub crowns from VHR imagery
+├── crown_segmentation/    # Step 1 — Detect shrub crowns from VHR imagery 
 │   ├── README.md
 │   ├── src/
 │   └── data/
