@@ -1,56 +1,58 @@
-Shrub Fractional Abundance Mapping in Drylands
-Shrub Fractional Abundance (SFA) — the proportion of shrubs per unit area — is a key indicator of aridity and ecosystem health in arid and semi-arid regions.
-This project presents a two-step deep learning + remote sensing framework combining high-resolution Google Earth imagery, Sentinel-2 time series, and hybrid AI models to map SFA at regional scales.
+🌵 Shrub Fractional Abundance Mapping in Drylands
+Shrub Fractional Abundance (SFA) — the proportion of shrubs per unit area — is a vital metric for monitoring aridity and ecosystem health in arid and semi-arid regions.
 
-📌 Overview
-Challenges in Large-Scale SFA Mapping
+This project introduces a two-step AI & remote sensing framework combining Google Earth (0.5 m) imagery, Sentinel‑2 time series (20 m), and hybrid machine learning models to deliver accurate, scalable SFA maps.
 
-Small shrub crowns, sparse distributions
-Spectral similarity with grasses and herbs
-Limitations of coarse imagery & field surveys
-Our Approach
+🔍 Overview
+Challenges
 
-High-Res Shrub Crown Mapping → Google Earth (0.5 m) imagery + Hybrid DINOv2 + CNN
-Scaling to Sentinel-2 (20 m, multi-temporal) → Phenology metrics + XGBoost regression
-Explainability → SHAP to identify key phenological periods
-🚀 Key Features
-High-Accuracy Shrub Mapping — Manual segmentation + DINOv2 feature extraction
-Regional SFA Prediction — Sentinel-2 time series + XGBoost
-Model Transparency — SHAP-based interpretation
-Ecological Insights — Relationships between SFA and climate variables
+Small, sparse shrub crowns
+Spectral overlap with grasses/herbs
+Limited detection with coarse imagery or surveys
+Our Solution
+
+Shrub Crown Mapping → Google Earth imagery + DINOv2 + CNN
+Scaling to Sentinel‑2 → Time-series phenology + XGBoost
+Explainability → SHAP to identify key seasonal predictors
+🚀 Features
+🎯 High-accuracy crown detection from high-res imagery
+🛰 Regional-scale SFA mapping from Sentinel‑2
+🧠 Interpretable AI with SHAP
+🌍 Ecological insights on SFA–climate relationships
 📂 Repository Structure
 
 data/               # Example data & preprocessing
 src/
   ge_processing/    # Google Earth segmentation
-  sentinel_analysis/# Sentinel-2 time series & phenology
+  sentinel_analysis/# Sentinel‑2 time series & phenology
   modeling/         # DINOv2+CNN & XGBoost models
-  shap_analysis/    # Explainability scripts
-results/            # Maps & validation metrics
-notebooks/          # Reproducible notebooks
+  shap_analysis/    # Model explainability scripts
+results/            # Maps & metrics
+notebooks/          # Reproducible Jupyter notebooks
 requirements.txt    # Dependencies
 LICENSE             # License info
-🛠 Methods
-Step 1 — Shrub Crown Mapping
+🛠 Method Workflow
+Step 1 — High-Res Shrub Crown Mapping
 
 Input: 0.5 m Google Earth imagery
+Process: Manual annotation + DINOv2 features + CNN
 Output: Binary shrub crown maps
-Model: DINOv2 + CNN
-Step 2 — Scaling Up with Sentinel-2
+Step 2 — Scaling via Sentinel‑2
 
-Input: 20 m Sentinel-2 surface reflectance (multi-temporal)
-Features: NDVI + multi-band phenology metrics
-Model: XGBoost regression with Step 1 labels
+Input: 20 m Sentinel‑2 reflectance (multi-temporal)
+Features: NDVI & spectral phenology metrics
+Model: XGBoost regression, trained on Step 1 results
 Validation
 
-70 sites (1 km² each); R² = 0.92 (crowns), R² = 0.68 (SFA)
-📊 Results
-1.31 million shrub crowns mapped in Inner Mongolia
-Accurate regional SFA maps
-Unimodal SFA–climate relationships identified
-🔧 Getting Started
+70 sites (1 km² each)
+Accuracy → Crown R² = 0.92, SFA R² = 0.68
+📊 Key Results
+1.31 million shrub crowns mapped (Inner Mongolia)
+High-precision regional SFA maps
+Clear unimodal SFA–climate relationships
+⚡ Quick Start
 
-# 1. Clone
+# 1. Clone repository
 git clone https://github.com/liuzhhua/Shrub_Fractional_Mapping.git
 cd Shrub_Fractional_Mapping
 
@@ -61,7 +63,7 @@ pip install -r requirements.txt
 python src/ge_processing/train_shrub_segmentation.py
 python src/modeling/train_xgboost.py
 python src/modeling/predict_sfa.py
-Data: Download and preprocess high-resolution imagery + Sentinel-2 from GEE or Copernicus Hub.
+Data required: Download/preprocess high-res imagery + Sentinel‑2 from GEE or Copernicus Hub.
 
 📜 Citation
 
@@ -75,4 +77,6 @@ Data: Download and preprocess high-resolution imagery + Sentinel-2 from GEE or C
 MIT License — see LICENSE.
 
 🤝 Contributing
-We welcome contributions! Please open an issue or pull request.
+PRs and issues welcome!
+
+Keywords: shrub fractional abundance, drylands, remote sensing, Google Earth, Sentinel‑2, phenology, deep learning, DINOv2, XGBoost, SHAP, Inner Mongolia
