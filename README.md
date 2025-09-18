@@ -71,14 +71,14 @@ Get up and running with the pipeline in a few steps.
     ```
 
 2.  **Install dependencies**
-   *   **Option A (Modular)**: python environment for crown_segmentation
+    *   **Option A (Modular)**: python environment for crown_segmentation.
+    *   **Option B (Modular)**: python environment for upscaling
     ```bash
     cd crown_segmentation
     pip install -r requirements.txt
     ```
-   *
-   *   **Option B (Modular)**: python environment for upscaling
-    ```bash
+    # Run Upscaling
+   
     cd upscaling
     pip install -r requirements.txt
     ```
