@@ -69,9 +69,10 @@ The segmentation process follows a clear, multi-stage pipeline:
       
 
 4. **Performance & Validation**
-    **Metric**:
+    Metric:
   
-    Score	Notes
+    Score	Notes：
+   
     R² (Validation)	0.92	Tested on 70 field sites in Inner Mongolia.
 
 
