@@ -76,13 +76,13 @@ Get up and running with the pipeline in a few steps.
     ```bash
     cd crown_segmentation
     pip install -r requirements.txt
-    ```
+    
     # Run Upscaling
-   
     cd upscaling
     pip install -r requirements.txt
     ```
 
+---
 4.  **Run the pipeline**
     *   **Option A (Modular)**: Run only Step 1 or Step 2. See the detailed `README.md` in each subfolder.
     *   **Option B (Full Pipeline)**:
