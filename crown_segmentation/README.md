@@ -52,14 +52,15 @@ The segmentation process follows a clear, multi-stage pipeline:
   python src/predict_crowns.py
 ```
     
-  **Inputs**
+  **Inputs**:
   
   VHR Imagery: GeoTIFFs from sources like Google Earth Pro exports, Google Earth Engine, or UAV/drone surveys.
   
   Annotation Data: Georeferenced shapefiles or raster masks for model training.
   
     
-  **Outputs**
+  **Outputs**:
+  
   Binary Crown Masks: GeoTIFF files (*.tif) with shrub pixels classified.
   
   Model Weights: Saved model checkpoints for future inference.
@@ -67,8 +68,8 @@ The segmentation process follows a clear, multi-stage pipeline:
   Training Logs: Performance metrics and loss curves.
   
 
-*  4. Performance & Validation
-  **Metric**
+*4. Performance & Validation
+  **Metric**:
 
   Score	Notes
   R² (Validation)	0.92	Tested on 70 field sites in Inner Mongolia.
