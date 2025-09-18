@@ -30,35 +30,35 @@ The segmentation process follows a clear, multi-stage pipeline:
 
 *  1. Install Dependencies
 *  Ensure you are in the crown_segmentation directory.
-    ```bash
-    pip install -r requirements.txt
-    ```
+* ```bash
+  pip install -r requirements.txt
+  ```
 
 *  2. Train the Segmentation Model
-   *  Configure paths in config.yaml (if applicable) and run:
+      Configure paths in config.yaml (if applicable) and run:
 ```bash
      python src/train_segmentation.py
 ```
 
 *  3. Generate Predictions
-*  Run the prediction script on your target imagery:
+      Run the prediction script on your target imagery:
 ```bash
   python src/predict_crowns.py
 ```
     
-  *  **Inputs**
-  *  VHR Imagery: GeoTIFFs from sources like Google Earth Pro exports, Google Earth Engine, or UAV/drone surveys.
-  *  Annotation Data: Georeferenced shapefiles or raster masks for model training.
+**Inputs**
+VHR Imagery: GeoTIFFs from sources like Google Earth Pro exports, Google Earth Engine, or UAV/drone surveys.
+Annotation Data: Georeferenced shapefiles or raster masks for model training.
   
-  *  **Outputs**
-  *  Binary Crown Masks: GeoTIFF files (*.tif) with shrub pixels classified.
-  *  Model Weights: Saved model checkpoints for future inference.
-  *  Training Logs: Performance metrics and loss curves.
+**Outputs**
+Binary Crown Masks: GeoTIFF files (*.tif) with shrub pixels classified.
+Model Weights: Saved model checkpoints for future inference.
+Training Logs: Performance metrics and loss curves.
 
 *  4. Performance & Validation
   **Metric**
-  * Score	Notes
-  * R² (Validation)	0.92	Tested on field sites in Inner Mongolia
+Score	Notes
+R² (Validation)	0.92	Tested on 70 field sites in Inner Mongolia.
 
 
 
@@ -88,6 +88,7 @@ crown_segmentation/
 If you use this specific module in your work, please cite the main repository and any relevant publications:
 
 
+```bibtex
 @misc{shrub_sfa_mapping_2025,
   author    = {Zhonghua Liu},
   title     = {Integrating very high‑resolution imagery, Sentinel-2 time-series data, and machine learning to map shrub fractional abundance across arid and semi-arid ecosystems in China},
@@ -96,6 +97,9 @@ If you use this specific module in your work, please cite the main repository an
   publisher = {GitHub},
   url       = {https://github.com/liuzhhua/Shrub_Fractional_Mapping}
 }
+```
+
+---
 📄 License
 This module is licensed under the MIT License — see the main project LICENSE file for details.
 
