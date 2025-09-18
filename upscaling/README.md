@@ -21,13 +21,13 @@ Predict SFA at consistent 20 m resolution over large extents by leveraging XGB
 The pipeline consists of:
 
 1. **Data Preparation**  
-   Align and resample Step 1 outputs to Sentinel-2 grid; normalize season dates
+   Align and resample Step 1 outputs to Sentinel-2 grid; normalize season dates.
 
-2. **Feature Extraction**  
-   Compute spectral indices and phenology metrics from Sentinel-2 time series
+2. **Data Download**  
+   Compute and download Sentinel-2 time series in Google Earth Engine.
 
 3. **Model Training**  
-   Train XGBoost model with k-fold cross-validation and hyperparameter tuning
+   Train XGBoost model with k-fold cross-validation and hyperparameter tuning.
 
 4. **Prediction & Mapping**  
    Apply model to produce SFA raster outputs
@@ -35,11 +35,6 @@ The pipeline consists of:
 5. **Model Interpretation**  
    Use SHAP values to quantify variable importance
 
-<p align="center">
-  <img src="https://via.placeholder.com/800x400/3D85C6/FFFFFF?text=Upscaling+Workflow+Diagram" alt="Upscaling workflow" width="80%">
-  <br>
-  <em>Conceptual workflow showing local-to-regional scaling process</em>
-</p>
 
 ---
 
@@ -54,19 +49,19 @@ pip install -r requirements.txt
 **Extract Features from Sentinel-2 Archive:**
 
 ```bash
-python src/extract_features.py --aoi path/to/aoi.geojson --start 2023-01-01 --end 2023-12-31
+Javascript run download_S2_data.jason
 ```
 
 **Train the Upscaling Model:**
 
 ```bash
-python src/train_upscaling.py --labels data/shrub_labels_20m.tif --features data/s2_features.csv
+python src/train_upscaling.py
 ```
 
 **Generate Predictions:**
 
 ```bash
-python src/predict_sfa.py --model results/xgb_model.json --features data/s2_features.csv --output outputs/sfa_map.tif
+python src/predict_sfa.py
 ```
 
 ---
@@ -76,7 +71,6 @@ python src/predict_sfa.py --model results/xgb_model.json --features data/s2_feat
 **Inputs:**
 - Shrub Fractional Abundance labels: Derived from crown segmentation maps (Step 1), aggregated to 20 m resolution
 - Sentinel-2 imagery: Level-2A surface reflectance, annual or multi-year, cloud-masked
-- Environmental covariates *(optional)*: DEM, climate grids, soil properties
 
 **Outputs:**
 - SFA Raster Map: GeoTIFF (*.tif) with continuous fractional abundance (0-1)
@@ -107,9 +101,8 @@ regional_upscaling/
 ├── data/                    # Training data and features
 │   ├── shrub_labels/        # SFA labels from Step 1 (20m aggregated)
 │   ├── sentinel2/           # Processed Sentinel-2 time series
-│   └── environmental/       # Ancillary data (DEM, climate, etc.)
 ├── src/                     # Source code
-│   ├── extract_features.py  # Feature extraction from Sentinel-2
+│   ├── download_S2_data.py  # Feature extraction from Sentinel-2
 │   ├── train_upscaling.py   # Model training script
 │   ├── predict_sfa.py       # Inference script
 │   ├── utils/               # Helper functions (preprocessing, metrics)
@@ -124,7 +117,7 @@ regional_upscaling/
 ## 💡 Best Practices
 
 - **Temporal Coverage:** Use at least 1 full growing season of Sentinel-2 data
-- **Label Quality:** Ensure Step 1 training labels are accurate and spatially balanced
+- **Label Quality:** Ensure Step 1 training labels are accurate and enough
 - **Model Interpretation:** Balance accuracy with ecological interpretability
 - **Validation:** Incorporate field validation data if available
 
