@@ -56,6 +56,8 @@ Precision	0.89	Robust detection of small, sparse shrubs
 Recall	0.85	Effective across varying canopy densities
 Example output from a test site:
 (Consider adding a small screenshot here comparing imagery vs. prediction mask)
+
+
 ---
 
 ## 📁 File Structure
