@@ -3,7 +3,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![DOI](https://zenodo.org/badge/DOI/xxxx.xxxx/zenodo.XXXXXXX.svg)](https://doi.org/xxxx.xxxx/zenodo.XXXXXXX)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.8+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com//liuzhhua/Shrub_Fractional_Mapping/graphs/commit-activity)
 
 A modular machine learning & remote sensing framework for mapping shrub cover in arid and semi‑arid ecosystems.
