@@ -2,7 +2,7 @@
 # 🌿 Crown Segmentation Module
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX) *(Optional: add if you have a DOI)*
+[![DOI](https://zenodo.org/badge/DOI/xxx.xxx/zenodo.XXXXXXX.svg)](https://doi.org/xxx.xxx/zenodo.XXXXXXX)
 
 **High‑Resolution Shrub Crown Segmentation using DINOv2 & CNN**
 
