@@ -66,7 +66,7 @@ Get up and running with the pipeline in a few steps.
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.comliuzhhua/Shrub_Fractional_Mapping.git
+    git clone https://github.com/liuzhhua/Shrub_Fractional_Mapping.git
     cd Shrub_Fractional_Mapping
     ```
 
@@ -75,12 +75,13 @@ Get up and running with the pipeline in a few steps.
     ```bash
     cd crown_segmentation
     pip install -r requirements.txt
+    ```
    *
    *   **Option B (Modular)**: python environment for upscaling
     ```bash
     cd upscaling
     pip install -r requirements.txt
-   *
+    ```
 
 4.  **Run the pipeline**
     *   **Option A (Modular)**: Run only Step 1 or Step 2. See the detailed `README.md` in each subfolder.
