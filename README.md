@@ -55,7 +55,7 @@ The repository is designed to be **modular**—each stage resides in its own sub
 
 ### Step 2 — Upscaling
 *   **Input**: Sentinel‑2 imagery time series + crown segmentation maps from Step 1.
-*   **Process**: Extraction of seasonal vegetation indices, XGBoost regression modeling, and model interpretability with SHAP.
+*   **Process**: Sentinel-2 data Processing, XGBoost regression modeling, and model interpretability with SHAP.
 *   **Output**: Large‑scale, continuous maps of Shrub Fractional Abundance (SFA).
 
 ---
@@ -66,7 +66,7 @@ Get up and running with the pipeline in a few steps.
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/yourusername/shrub-sfa-mapping.git
+    git clone https://github.comliuzhhua/Shrub_Fractional_Mapping.git
     cd shrub-sfa-mapping
     ```
 
@@ -86,7 +86,7 @@ Get up and running with the pipeline in a few steps.
 
     # Run Upscaling
     cd ../upscaling
-    python src/extract_features.py
+    python src/download_Sentinel2_data.py
     python src/train_upscaling.py
     python src/predict_sfa.py
     ```
@@ -97,8 +97,8 @@ Get up and running with the pipeline in a few steps.
 
 | Stage | R² Score | Resolution | Region Example |
 | :--- | :--- | :--- | :--- |
-| **Crown Segmentation** | 0.92 | 0.5 m | Inner Mongolia |
-| **Upscaling SFA** | 0.68 | 20 m | Site Scale |
+| **Crown Segmentation** | 0.92 | 0.5 m | Site Scale |
+| **Upscaling SFA** | 0.68 | 20 m | Inner Mongolia |
 
 > **Note**: Visualizations, charts, and example output maps are available in each subfolder's `outputs/` directory.
 
@@ -107,7 +107,7 @@ Get up and running with the pipeline in a few steps.
 ## 🧩 Dependencies
 
 Core dependencies include:
-*   **Python 3.9+**
+*   **Python 3.8+**
 *   **PyTorch** ≥ 1.13
 *   **Geospatial Libraries**: `rasterio`, `geopandas`, `earthengine-api`
 *   **Machine Learning**: `xgboost`, `scikit-learn`, `shap`
@@ -122,11 +122,12 @@ If this software or method contributes to your research, please cite it as:
 
 ```bibtex
 @misc{shrub_sfa_mapping_2025,
-  author    = {Your Name and Co-authors},
-  title     = {AI-Driven Mapping of Shrub Fractional Abundance in Drylands},
+  author    = {Zhonghua Liu},
+  title     = {Integrating very high‑resolution imagery, Sentinel-2 time-series data, and machine learning to map shrub fractional abundance across arid and semi-arid ecosystems in China},
   year      = {2025},
+  journal   = {Remote Sensing of Environment},
   publisher = {GitHub},
-  url       = {https://github.com/yourusername/shrub-sfa-mapping}
+  url       = {https://github.com/liuzhhua/Shrub_Fractional_Mapping}
 }
 ```
 
@@ -141,25 +142,4 @@ This project is open source and available under the **[MIT License](LICENSE)**.
 ## 🤝 Contributing
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
-
-For major changes, please open an issue first to discuss what you would like to change.
-```
-
-### Key Improvements Made:
-
-1.  **Visual Badges**: Added shields.io badges at the top for license, Python version, and maintenance status. This provides instant, at-a-glance information. You can customize these further.
-2.  **Clear Structure**: Used headers and emojis to break the text into easily scannable sections.
-3.  **Improved Formatting**:
-    *   The repository structure is in a code block for clarity.
-    *   The workflow is presented as a clear, two-step process.
-    *   The results table is neatly formatted.
-4.  **Action-Oriented Language**: The "Quick Start" section uses clear, copy-pastable commands.
-5.  **Professional Tone**: The text is polished to be both informative and engaging for a scientific/technical audience.
-6.  **Contributing Guidelines**: Added a standard template for contributing, which encourages community involvement.
-
-Simply copy and paste this into your `README.md` file, and remember to replace `yourusername` with your actual GitHub username!
+Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to modify.
