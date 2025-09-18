@@ -32,16 +32,16 @@ The segmentation process follows a clear, multi-stage pipeline:
 
 Ensure you are in the crown_segmentation directory.
 
-* ```bash
-pip install -r requirements.txt
-  ```
+```bash
+  pip install -r requirements.txt
+```
 
 * 2. Train the Segmentation Model
 
 Configure paths in config.yaml (if applicable) and run:
       
 ```bash
-python src/train_segmentation.py
+  python src/train_segmentation.py
 ```
 
 * 3. Generate Predictions
@@ -49,7 +49,7 @@ python src/train_segmentation.py
 Run the prediction script on your target imagery:
       
 ```bash
-python src/predict_crowns.py
+  python src/predict_crowns.py
 ```
     
   **Inputs**:
