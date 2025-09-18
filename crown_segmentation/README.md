@@ -28,7 +28,7 @@ The segmentation process follows a clear, multi-stage pipeline:
 
 ## ⚡ Quick Start
 
-* 1. Install Dependencies
+1.  **Install Dependencies**:
 
     Ensure you are in the crown_segmentation directory.
   
@@ -36,7 +36,7 @@ The segmentation process follows a clear, multi-stage pipeline:
     pip install -r requirements.txt
   ```
 
-* 2. Train the Segmentation Model
+2.  **Train the Segmentation Model**：
 
     Configure paths in config.yaml (if applicable) and run:
         
@@ -44,7 +44,7 @@ The segmentation process follows a clear, multi-stage pipeline:
     python src/train_segmentation.py
   ```
 
-* 3. Generate Predictions
+3.  **Generate Predictions**：
 
     Run the prediction script on your target imagery:
         
@@ -68,7 +68,7 @@ The segmentation process follows a clear, multi-stage pipeline:
       Training Logs: Performance metrics and loss curves.
       
 
-* 4. Performance & Validation
+4. **Performance & Validation**
     **Metric**:
   
     Score	Notes
