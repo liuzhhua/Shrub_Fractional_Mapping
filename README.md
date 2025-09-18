@@ -2,7 +2,7 @@
 # 🌵 Mapping of Shrub Fractional Abundance in Drylands
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![DOI](https://zenodo.org/badge/DOI/xxxx.xxxx/zenodo.XXXXXXX.svg)](https://doi.org/xxxx.xxxx/zenodo.XXXXXXX) *(Optional: add if you have a DOI)*
+[![DOI](https://zenodo.org/badge/DOI/xxxx.xxxx/zenodo.XXXXXXX.svg)](https://doi.org/xxxx.xxxx/zenodo.XXXXXXX)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com//liuzhhua/Shrub_Fractional_Mapping/graphs/commit-activity)
 
@@ -134,7 +134,7 @@ If this software or method contributes to your research, please cite it as:
   author    = {Zhonghua Liu},
   title     = {Integrating very high‑resolution imagery, Sentinel-2 time-series data, and machine learning to map shrub fractional abundance across arid and semi-arid ecosystems in China},
   year      = {2025},
-  journal   = {Remote Sensing of Environment},
+  journal   = {Remote Sensing of Environment (under review)},
   publisher = {GitHub},
   url       = {https://github.com/liuzhhua/Shrub_Fractional_Mapping}
 }
