@@ -28,37 +28,37 @@ The segmentation process follows a clear, multi-stage pipeline:
 
 ## ⚡ Quick Start
 
-*  1. Install Dependencies
-*  Ensure you are in the crown_segmentation directory.
+*1. Install Dependencies---
+*  Ensure you are in the crown_segmentation directory.---
 * ```bash
   pip install -r requirements.txt
   ```
 
-*  2. Train the Segmentation Model
-      Configure paths in config.yaml (if applicable) and run:
+*2. Train the Segmentation Model---
+      Configure paths in config.yaml (if applicable) and run:---
 ```bash
      python src/train_segmentation.py
 ```
 
-*  3. Generate Predictions
-      Run the prediction script on your target imagery:
+*3. Generate Predictions---
+      Run the prediction script on your target imagery:---
 ```bash
   python src/predict_crowns.py
 ```
     
-**Inputs**
-VHR Imagery: GeoTIFFs from sources like Google Earth Pro exports, Google Earth Engine, or UAV/drone surveys.
-Annotation Data: Georeferenced shapefiles or raster masks for model training.
-  
-**Outputs**
-Binary Crown Masks: GeoTIFF files (*.tif) with shrub pixels classified.
-Model Weights: Saved model checkpoints for future inference.
-Training Logs: Performance metrics and loss curves.
+  **Inputs**---
+  VHR Imagery: GeoTIFFs from sources like Google Earth Pro exports, Google Earth Engine, or UAV/drone surveys.---
+  Annotation Data: Georeferenced shapefiles or raster masks for model training.---
+    
+  **Outputs**
+  Binary Crown Masks: GeoTIFF files (*.tif) with shrub pixels classified.---
+  Model Weights: Saved model checkpoints for future inference.---
+  Training Logs: Performance metrics and loss curves.---
 
 *  4. Performance & Validation
-  **Metric**
-Score	Notes
-R² (Validation)	0.92	Tested on 70 field sites in Inner Mongolia.
+  **Metric**---
+  Score	Notes---
+  R² (Validation)	0.92	Tested on 70 field sites in Inner Mongolia.
 
 
 
