@@ -28,28 +28,28 @@ The segmentation process follows a clear, multi-stage pipeline:
 
 ## ⚡ Quick Start
 
-*1. Install Dependencies
+* 1. Install Dependencies
 
-*  Ensure you are in the crown_segmentation directory.
+Ensure you are in the crown_segmentation directory.
 
 * ```bash
-  pip install -r requirements.txt
+pip install -r requirements.txt
   ```
 
-*2. Train the Segmentation Model
+* 2. Train the Segmentation Model
 
-      Configure paths in config.yaml (if applicable) and run:
+Configure paths in config.yaml (if applicable) and run:
       
 ```bash
-     python src/train_segmentation.py
+python src/train_segmentation.py
 ```
 
-*3. Generate Predictions
+* 3. Generate Predictions
 
-      Run the prediction script on your target imagery:
+Run the prediction script on your target imagery:
       
 ```bash
-  python src/predict_crowns.py
+python src/predict_crowns.py
 ```
     
   **Inputs**:
