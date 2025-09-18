@@ -1,7 +1,7 @@
 🌵 Shrub Fractional Abundance Mapping in Drylands
 Shrub Fractional Abundance (SFA) — the proportion of shrubs per unit area — is a vital metric for monitoring aridity and ecosystem health in arid and semi-arid regions.
 
-This project introduces a two-step AI & remote sensing framework combining Google Earth (0.5 m) imagery, Sentinel‑2 time series (20 m), and hybrid machine learning models to deliver accurate, scalable SFA maps.
+This project introduces a two-step deep learning & remote sensing framework combining very high-resolution imagery (VHR), Sentinel‑2 time series, and hybrid machine learning models to deliver accurate, scalable SFA maps.
 
 🔍 Overview
 Challenges
@@ -11,36 +11,34 @@ Spectral overlap with grasses/herbs
 Limited detection with coarse imagery or surveys
 Our Solution
 
-Shrub Crown Mapping → Google Earth imagery + DINOv2 + CNN
+Shrub Crown Mapping → VHR from Google Earth + DINOv2 + CNN
 Scaling to Sentinel‑2 → Time-series phenology + XGBoost
 Explainability → SHAP to identify key seasonal predictors
 🚀 Features
-🎯 High-accuracy crown detection from high-res imagery
+🎯 High-accuracy crown detection from VHR imagery
 🛰 Regional-scale SFA mapping from Sentinel‑2
-🧠 Interpretable AI with SHAP
+🧠 Interpretable machine learning with SHAP
 🌍 Ecological insights on SFA–climate relationships
 📂 Repository Structure
 
 data/               # Example data & preprocessing
 src/
-  ge_processing/    # Google Earth segmentation
+  VHR_processing/    # Crown level segmentation
   sentinel_analysis/# Sentinel‑2 time series & phenology
   modeling/         # DINOv2+CNN & XGBoost models
   shap_analysis/    # Model explainability scripts
-results/            # Maps & metrics
-notebooks/          # Reproducible Jupyter notebooks
 requirements.txt    # Dependencies
 LICENSE             # License info
 🛠 Method Workflow
 Step 1 — High-Res Shrub Crown Mapping
 
-Input: 0.5 m Google Earth imagery
+Input: 0.5 m VHR imagery
 Process: Manual annotation + DINOv2 features + CNN
 Output: Binary shrub crown maps
 Step 2 — Scaling via Sentinel‑2
 
 Input: 20 m Sentinel‑2 reflectance (multi-temporal)
-Features: NDVI & spectral phenology metrics
+Features: Time-series spectral metrics
 Model: XGBoost regression, trained on Step 1 results
 Validation
 
