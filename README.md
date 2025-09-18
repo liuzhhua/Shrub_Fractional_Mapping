@@ -1,53 +1,56 @@
 🌵 Mapping of Shrub Fractional Abundance in Drylands
-A modular machine learning & remote sensing framework for arid and semi‑arid ecosystems
-
 License: MIT
 Python
 Remote Sensing
 
+A modular machine learning & remote sensing framework for arid and semi-arid ecosystems
+
 📖 Overview
-Shrub cover plays an important ecological role in arid and semi‑arid ecosystems, influencing biodiversity, soil stability, and carbon storage.
+Shrub cover plays a crucial role in arid and semi-arid ecosystems, influencing biodiversity, soil stability, and carbon storage.
 However, mapping Shrub Fractional Abundance (SFA) at large scales remains challenging.
 
-This project develops a two‑stage workflow:
+This project presents a two-stage workflow:
 
-Fine‑scale shrub crown segmentation from high‑resolution imagery
-Regional upscaling of SFA using Sentinel‑2 time series and machine learning
-The repository is modular — each stage has its own subfolder, scripts, and documentation, so you can run them independently or as a complete pipeline.
+Fine-scale shrub crown segmentation from high-resolution imagery
+Regional upscaling of SFA using Sentinel-2 time series and machine learning
+The repository is modular: each stage is in its own subfolder with scripts and documentation.
+Run them independently or as a complete pipeline!
 
 🗂 Repository Structure
 
 .
-├── crown_segmentation/    # Step 1 — Detect shrub crowns from very high-resolution imagery
-│   ├── README.md           # Detailed crown segmentation instructions
-│   ├── src/                # Model training & prediction scripts
-│   └── data/               # Example HRS imagery & annotations
+├── crown_segmentation/    # Step 1 — Detect shrub crowns from VHR imagery
+│   ├── README.md
+│   ├── src/
+│   └── data/
 │
-├── upscaling/              # Step 2 — Upscale SFA using Sentinel‑2 & machine learning
-│   ├── README.md           # Detailed upscaling instructions
-│   ├── src/                # Feature extraction & XGBoost modeling
-│   └── data/               # Example remote sensing inputs
+├── upscaling/             # Step 2 — Upscale SFA with Sentinel-2 & ML
+│   ├── README.md
+│   ├── src/
+│   └── data/
 │
 ├── LICENSE
-└── README.md               # Main repo overview (this file)
+└── README.md              # Main repo overview (this file)
 Subfolder Summaries
 crown_segmentation/
-High‑Resolution Shrub Crown Segmentation using DINOv2 & CNN.
-Takes very high‑resolution (VHR) imagery (~0.5 m) and produces binary shrub crown masks.
+High‑resolution shrub crown segmentation using DINOv2 & CNN.
+Input: VHR imagery (~0.5 m). Output: Binary shrub crown masks.
 
 upscaling/
-Regional Upscaling of Shrub Fractional Abundance with Sentinel‑2 Time Series.
-Uses crown segmentation results from Step 1 plus Sentinel‑2 phenology variables to predict SFA at 20 m resolution.
+Regional upscaling of SFA with Sentinel‑2 Time Series.
+Uses outputs from crown segmentation and Sentinel-2 to predict SFA at 20 m resolution.
 
 🔄 Workflow
 Step 1 — Crown Segmentation
-Input: VHR imagery (Google Earth Pro / UAV / commercial providers)
-Process: Feature extraction (DINOv2), training of CNN, segmentation of shrub crowns
+
+Input: VHR imagery (Google Earth Pro / UAV / commercial)
+Process: Feature extraction (DINOv2), CNN training, crown segmentation
 Output: Binary shrub crown maps (raster)
 Step 2 — Upscaling
-Input: Sentinel‑2 imagery + crown segmentation (Step 1)
-Process: Feature extraction (seasonal vegetation indices), XGBoost regression, SHAP interpretability
-Output: Large‑scale continuous SFA maps
+
+Input: Sentinel-2 imagery + crown segmentation results
+Process: Feature extraction (vegetation indices), XGBoost regression, SHAP interpretation
+Output: Large-scale continuous SFA maps
 🚀 Quick Start
 1️⃣ Clone the repository
 
@@ -63,10 +66,12 @@ pip install -r requirements.txt
 Option A: Run only Step 1 or Step 2 (see each subfolder's README)
 Option B: Run the full pipeline:
 
+# Step 1: Crown Segmentation
 cd crown_segmentation
 python src/train_segmentation.py
 python src/predict_crowns.py
 
+# Step 2: Upscaling
 cd ../upscaling
 python src/extract_features.py
 python src/train_upscaling.py
@@ -98,3 +103,5 @@ This project is licensed under the MIT License — see LICENSE for details.
 
 🤝 Contributing
 Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to modify.
+
+⭐️ If you find this project useful, please star the repo and share your feedback!
