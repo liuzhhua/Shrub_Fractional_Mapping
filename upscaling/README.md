@@ -2,7 +2,7 @@
 # 🌍 Regional Upscaling of Shrub Fractional Abundance
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![DOI](https://zenodo.org/badge/DOI/xxxx.xxxx/zenodo.XXXXXXX.svg)](https://doi.org/xxxx.xxxx/zenodo.XXXXXXX) *(Optional: add if you have a DOI)*
+[![DOI](https://zenodo.org/badge/DOI/xxxx.xxxx/zenodo.XXXXXXX.svg)](https://doi.org/xxxx.xxxx/zenodo.XXXXXXX)
 
 **Regional Upscaling using Sentinel-2 Time Series & XGBoost**
 
