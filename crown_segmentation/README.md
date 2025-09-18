@@ -10,7 +10,7 @@ This module detects and segments individual shrub crowns from very high‑resolu
 
 ---
 
-## 📍 Objective
+## 🎯 Objective
 
 To generate accurate, fine-scale binary masks of shrub crowns in arid and semi-arid regions. These masks serve as the critical training labels for the regional upscaling of Shrub Fractional Abundance (SFA) in **Step 2**.
 
