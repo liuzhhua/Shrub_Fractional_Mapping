@@ -1,104 +1,173 @@
-# 🌵 Mapping of Shrub Fractional Abundance in Drylands
+
+# 🌍 Regional Upscaling of Shrub Fractional Abundance
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX) *(Optional: add if you have a DOI)*
 
-An end-to-end, scalable framework for mapping shrub cover fractional abundance (SFA) from local to regional scales. This repository combines very high-resolution crown segmentation with Sentinel-2 time-series analysis using state-of-the-art deep learning and machine learning models (DINOv2, CNN, XGBoost).
+**Regional Upscaling using Sentinel-2 Time Series & XGBoost**
 
-**Key Features:**
-*   **🌿 Fine-Scale Detection:** Accurately segments individual shrub crowns from sub-meter imagery.
-*   **🛰 Regional Upscaling:** Leverages Sentinel-2 phenology to predict SFA over large areas.
-*   **📊 Explainable AI:** Uses SHAP to identify key seasonal drivers of shrub presence.
-*   **⚡ Production-Ready:** Modular code designed for scalability on cloud platforms (GEE, AWS).
+This module builds on high-resolution shrub crown maps (Step 1) to train and scale prediction of Shrub Fractional Abundance (SFA) across large regions using Sentinel-2 time series data and machine learning.
 
 ---
 
-## 📋 Repository Overview
+## 🎯 Objective
 
-This project is structured into two sequential, modular steps. You can run each step independently with its own inputs, or chain them together for a complete analysis.
+Predict SFA at consistent 20 m resolution over large extents by leveraging XGBoost model and temporal and phenology information of vegetation.
 
-```mermaid
-graph LR
-    A[VHR Imagery] --> B[Step 1: Crown Segmentation];
-    B -- Crown Masks --> C[Step 2: Regional Upscaling];
-    D[Sentinel-2 Time Series] --> C;
-    C -- Output --> E[Regional SFA Map];
-Step	Module	Key Tech	Scale	Output
-1	Crown Segmentation	DINOv2, CNN	Local	Binary crown masks
-2	Regional Upscaling	XGBoost, SHAP	Regional	Fractional abundance map
-🚀 Getting Started
-Prerequisites
-Python 3.9+ and pip
-A GitHub Personal Access Token (for automated downloading of DINOv2 weights)
-Geospatial data (See each module's README for specific sources)
-Installation & Setup
-Clone the Repository
+---
 
+## 🛠️ Workflow
 
-git clone https://github.com/yourusername/shrub-sfa-mapping.git
-cd shrub-sfa-mapping
-Install Dependencies<br>
-Each module has its own environment. Install dependencies for the step you want to run.
+The pipeline consists of:
 
-For Step 1:
+1. **Data Preparation**  
+   Align and resample Step 1 outputs to Sentinel-2 grid; normalize season dates
 
-cd crown_segmentation
+2. **Feature Extraction**  
+   Compute spectral indices and phenology metrics from Sentinel-2 time series
+
+3. **Model Training**  
+   Train XGBoost model with k-fold cross-validation and hyperparameter tuning
+
+4. **Prediction & Mapping**  
+   Apply model to produce SFA raster outputs
+
+5. **Model Interpretation**  
+   Use SHAP values to quantify variable importance
+
+<p align="center">
+  <img src="https://via.placeholder.com/800x400/3D85C6/FFFFFF?text=Upscaling+Workflow+Diagram" alt="Upscaling workflow" width="80%">
+  <br>
+  <em>Conceptual workflow showing local-to-regional scaling process</em>
+</p>
+
+---
+
+## ⚡ Quick Start
+
+**Install Dependencies:**
+
+```bash
 pip install -r requirements.txt
-For Step 2:
+```
 
-cd regional_upscaling
-pip install -r requirements.txt
-🧪 How to Run
-Option 1: Run the Full Pipeline (Recommended)
-Process your VHR imagery with Step 1 to generate training labels (crown masks).
-Use these masks alongside Sentinel-2 data in Step 2 to train the upscaling model and generate a regional SFA map.
-Option 2: Run Modules Independently
-Only Step 1: If you only need fine-scale shrub detection.
-Only Step 2: If you already have shrub training labels (e.g., from manual delineation or other projects).
-Detailed instructions, example commands, and configuration options are provided in each module's README:
+**Extract Features from Sentinel-2 Archive:**
 
-🌿 Crown Segmentation Module Documentation
-🛰 Regional Upscaling Module Documentation
-📊 Performance Highlights
-Metric	Step 1: Crown Segmentation	Step 2: Regional Upscaling
-R²	0.92 (validation sites)	0.68 (site-scale SFA estimation)
-Strength	Detects small, sparse shrubs	Identifies key seasonal phenology predictors
-🗃️ Data & Preprocessing
-Step 1 Input: Very High-Resolution (VHR) imagery (~0.5 m) from Google Earth Pro, UAVs, or Planet Labs.
-Step 2 Input: Sentinel-2 Level-2A (Bottom-of-Atmosphere) imagery and crown masks from Step 1.
-Output: GeoTIFF raster files (.tif) for both binary crowns and continuous SFA maps.
-For detailed data preparation steps, please refer to the documentation within each module.
+```bash
+python src/extract_features.py --aoi path/to/aoi.geojson --start 2023-01-01 --end 2023-12-31
+```
 
-🤝 Contributing
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+**Train the Upscaling Model:**
 
-Fork the Project
-Create your Feature Branch (git checkout -b feature/AmazingFeature)
-Commit your Changes (git commit -m 'Add some AmazingFeature')
-Push to the Branch (git push origin feature/AmazingFeature)
-Open a Pull Request
-📜 Citation
-If you use this software or methodology in your research, please cite the associated paper and this repository:
+```bash
+python src/train_upscaling.py --labels data/shrub_labels_20m.tif --features data/s2_features.csv
+```
 
+**Generate Predictions:**
 
-@article{yourpaper2025,
-  title={AI-Driven Mapping of Shrub Fractional Abundance in Drylands},
-  author={Your Name, Co-author...},
-  journal={Remote Sensing of Environment},
-  volume={XXX},
-  pages={XXX--XXX},
-  year={2025},
-  publisher={Elsevier}
-}
+```bash
+python src/predict_sfa.py --model results/xgb_model.json --features data/s2_features.csv --output outputs/sfa_map.tif
+```
 
-@software{shrub_sfa_mapping_2025,
-  author = {Your Name},
-  title = {shrub-sfa-mapping: An end-to-end framework for mapping shrub cover},
-  year = {2025},
+---
+
+## 🗂️ Inputs & Outputs
+
+**Inputs:**
+- Shrub Fractional Abundance labels: Derived from crown segmentation maps (Step 1), aggregated to 20 m resolution
+- Sentinel-2 imagery: Level-2A surface reflectance, annual or multi-year, cloud-masked
+- Environmental covariates *(optional)*: DEM, climate grids, soil properties
+
+**Outputs:**
+- SFA Raster Map: GeoTIFF (*.tif) with continuous fractional abundance (0-1)
+- Variable Importance Table: CSV with predictor importance
+- SHAP Summary Plots: Visual interpretation of model decisions
+- Model Metadata: JSON with config and performance metrics
+
+---
+
+## 📊 Performance & Validation
+
+- **Model R² (Validation):** 0.68 at site scale
+- Captures key phenological patterns across seasons
+- Identifies optimal seasonal predictors via SHAP
+
+<p align="center">
+  <img src="https://via.placeholder.com/600x300/6AA84F/FFFFFF?text=SHAP+Feature+Importance" alt="SHAP analysis" width="60%">
+  <br>
+  <em>Example SHAP plot showing key seasonal predictors</em>
+</p>
+
+---
+
+## 📁 File Structure
+
+```
+regional_upscaling/
+├── data/                    # Training data and features
+│   ├── shrub_labels/        # SFA labels from Step 1 (20m aggregated)
+│   ├── sentinel2/           # Processed Sentinel-2 time series
+│   └── environmental/       # Ancillary data (DEM, climate, etc.)
+├── src/                     # Source code
+│   ├── extract_features.py  # Feature extraction from Sentinel-2
+│   ├── train_upscaling.py   # Model training script
+│   ├── predict_sfa.py       # Inference script
+│   ├── utils/               # Helper functions (preprocessing, metrics)
+│   └── models/              # XGBoost model configuration
+├── outputs/                 # Prediction maps, model weights, results
+├── config.yaml              # Configuration parameters (optional)
+└── README.md                # This file
+```
+
+---
+
+## 💡 Best Practices
+
+- **Temporal Coverage:** Use at least 1 full growing season of Sentinel-2 data
+- **Label Quality:** Ensure Step 1 training labels are accurate and spatially balanced
+- **Model Interpretation:** Balance accuracy with ecological interpretability
+- **Validation:** Incorporate field validation data if available
+
+---
+
+## 🔍 Example Applications
+
+- **Dryland monitoring:** Track shrub encroachment in grazing lands
+- **Carbon accounting:** Estimate above-ground biomass in shrub ecosystems
+- **Habitat mapping:** Identify critical wildlife habitats
+- **Climate change studies:** Monitor vegetation response to changing conditions
+
+---
+
+## 🛠️ Troubleshooting
+
+- **Cloud contamination:** Use robust cloud masking algorithms
+- **Temporal gaps:** Consider data fusion from multiple satellites
+- **Computational limits:** Use chunked processing for large areas
+
+---
+
+## 📚 Citation
+
+If you use this module in your research, please cite:
+
+```bibtex
+@misc{shrub_sfa_mapping_2025,
+  author    = {Zhonghua Liu},
+  title     = {Integrating very high‑resolution imagery, Sentinel-2 time-series data, and machine learning to map shrub fractional abundance across arid and semi-arid ecosystems in China},
+  year      = {2025},
+  journal   = {Remote Sensing of Environment},
   publisher = {GitHub},
-  journal = {GitHub repository},
-  url = {https://github.com/yourusername/shrub-sfa-mapping}
+  url       = {https://github.com/liuzhhua/Shrub_Fractional_Mapping}
 }
-📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+```
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+*For questions or contributions, please open an issue or pull request on [GitHub](https://github.com/liuzhhua/Shrub_Fractional_Mapping).*
