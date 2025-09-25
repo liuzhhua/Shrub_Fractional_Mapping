@@ -7,7 +7,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com//liuzhhua/Shrub_Fractional_Mapping/graphs/commit-activity)
 
 A modular machine learning & remote sensing framework for mapping shrub cover in arid and semi‑arid ecosystems.
-
+    
 ---
 
 ## 📖 Overview
